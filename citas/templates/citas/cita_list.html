@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Lista de citas</h1>
+    <ul>
+{% for cita in citas %}
+    <li>{{ cita.fecha }} - {{ cita.hora }} - {{ cita.cliente }} - {{ cita.mascota }}</li>
+{% empty %}
+    <li>No hay citas programadas.</li>
+{% endfor %}
+    </ul>
+{% endblock %}

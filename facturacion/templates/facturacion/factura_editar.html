@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Editar factura</h1>
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+    <div class="form-group">
+    <label for="cliente">Cliente:</label>
+    <select class="form-control" id="cliente" name="cliente">
+{% for cliente in clientes %}
+        <option value="{{ cliente.id }}" {% if factura.cliente_id == cliente.id %}selected{% endif %}>{{ cliente.nombre }}</option>
+{% endfor %}
+    </select>
+    </div>
+    <div class="form-group">
+    <label for="fecha">Fecha:</label>
+    <input type="date" class="form-control" id="fecha" name="fecha" value="{{ factura.fecha }}">
+    </div>
+    <div class="form-group">
+    <label for="productos">Productos:</label>
+    <select multiple class="form-control" id="productos" name="productos">
+{% for producto in productos %}
+        <option value="{{ producto.id }}" {% if producto in factura.productos.all %}selected{% endif %}>{{ producto.nombre }} - ${{ producto.precio }}</option>
+{% endfor %}
+    </select>
+</div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+{% endblock %}
+

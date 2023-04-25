@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Detalles de la cita</h1>
+    <p>Fecha: {{ cita.fecha }}</p>
+    <p>Hora: {{ cita.hora }}</p>
+    <p>Cliente: {{ cita.cliente }}</p>
+    <p>Mascota: {{ cita.mascota }}</p>
+{% endblock %}
